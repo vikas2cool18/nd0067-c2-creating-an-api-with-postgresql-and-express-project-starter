@@ -95,7 +95,7 @@ project
 │  ├── routes         # The API routes maps to the Controllers
 │  ├── services       # The services contains the database queries and returning objects or throwing errors
 │  └── validations    # Validations to validate data before being processed by controllers (used in routes)
-└── storage           # Automatically generated, contains the uploaded files from users
+
 ```
 
 ## Development Instructions
