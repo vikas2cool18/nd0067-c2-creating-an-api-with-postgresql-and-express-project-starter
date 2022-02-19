@@ -10,7 +10,7 @@
     "build": "npx prisma generate && tsc -p .",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "test_old": "jasmine-ts",
-    "test": "set ENV=test&& db-migrate --env test up && jasmine-ts --config=spec/support/jasmine.json && db-migrate --env test down",
+    "test": "set ENV=test && npx prisma migrate dev && jasmine-ts --config=spec/support/jasmine.json",
     "tsc": "tsc",
     "lint": "eslint src/**/*.ts",
     "prettier": "prettier --config .prettierrc src/**/*.ts --write"
