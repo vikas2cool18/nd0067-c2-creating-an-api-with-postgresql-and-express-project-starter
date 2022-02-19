@@ -1,0 +1,60 @@
+2022-02-19 10:39:28 [ERROR]: [unhandledRejection] Error: 
+    at Function.<anonymous> (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\user-service.ts:32:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\user-service.ts:5:58)
+2022-02-19 11:28:49 [ERROR]: [unhandledRejection] Error: 
+    at Function.<anonymous> (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\user-service.ts:32:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\user-service.ts:5:58)
+2022-02-19 11:29:47 [ERROR]: [unhandledRejection] Error: 
+    at Function.<anonymous> (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\user-service.ts:32:13)
+    at Generator.next (<anonymous>)
+    at fulfilled (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\user-service.ts:5:58)
+2022-02-19 11:37:18 [ERROR]: [unhandledRejection] Error: 
+Invalid `prisma.orders.findMany()` invocation in
+C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\src\services\order-service.ts:48:37
+
+  45 }
+  46 
+  47 static async findCompleteByUserId(user_id: number): Promise<Orders[]> {
+→ 48   const order = await prisma.orders.findMany({
+         where: {
+           user_id: NaN,
+                    ~~~
+           status: 'complete'
+         }
+       })
+
+Argument user_id: Got invalid value NaN on prisma.findManyOrders. Provided Float, expected IntFilter or Int:
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+
+
+    at Object.validate (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:34786:20)
+    at PrismaClient._executeRequest (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:40905:17)
+    at consumer (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:40850:23)
+    at C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:40854:76
+    at runInChildSpan (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:39945:12)
+    at C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:40854:20
+    at AsyncResource.runInAsyncScope (async_hooks.js:186:9)
+    at PrismaClient._request (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:40853:86)
+    at C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:40184:25
+    at _callback (C:\Users\DELL\udacity-fullstack-developer\nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter\node_modules\@prisma\client\runtime\index.js:39959:14)
