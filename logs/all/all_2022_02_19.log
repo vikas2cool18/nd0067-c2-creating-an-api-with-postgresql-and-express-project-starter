@@ -103,3 +103,8 @@ type IntFilter {
 2022-02-19 11:41:43 [INFO]: ⚡ My App Server Running here -> 127.0.0.1:8000
 2022-02-19 11:41:47 [HTTP]: 87.365 ms - [200] POST /orders-current-by-userid
 
+2022-02-19 11:43:08 [INFO]: ⚡ My App Server Running here -> 127.0.0.1:8000
+2022-02-19 11:43:55 [HTTP]: 95.420 ms - [200] POST /order/complete
+
+2022-02-19 11:44:26 [HTTP]: 10.387 ms - [200] POST /orders-complete-by-userid
+
