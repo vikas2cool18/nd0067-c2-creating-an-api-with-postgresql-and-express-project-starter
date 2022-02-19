@@ -100,9 +100,10 @@ project
 
 ## Development Instructions
 
-1. Run `npm install` command to install dependencies
-2. Run `npx prisma migrate dev` command to initialize the database or `npx prisma generate` command if the database already exists
-3. Run `npm start` or `npm run dev` command to run local server (it restarts each time the code is changed)
+1. Copy and rename `.env.example` file to `.env` and edit settings
+2. Run `npm install` command to install dependencies
+3. Run `npx prisma migrate dev` command to initialize the database or `npx prisma generate` command if the database already exists
+4. Run `npm start` or `npm run dev` command to run local server (it restarts each time the code is changed)
 
 
 
