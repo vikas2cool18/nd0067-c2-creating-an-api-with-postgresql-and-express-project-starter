@@ -1,54 +1,109 @@
-# Storefront Backend Project
+## Udacity Full Stack javascript developer - Storefront Backend
+This is the second project of the Udacity Full Stack Javascript Developer Nanodegree program: Storefront Backend.
 
-## Getting Started
+It consists of an Express server, combined with a Postgres database, that exposes an API for a storefront backend. Users' passwords are stored encrypted in the database, and accessing some endpoints requires a JWT token. All functions to access the Postgres database, and all the API endpoints have associated unit tests.
 
-This repo contains a basic Node and Express app to get you started in constructing an API. To get started, clone this repo and run `yarn` in your terminal at the project root.
+The starting point for this project is the repository available at: https://github.com/udacity/nd0067-c2-creating-an-api-with-postgresql-and-express-project-starter
 
-## Required Technologies
-Your application must make use of the following libraries:
-- Postgres for the database
-- Node/Express for the application logic
-- dotenv from npm for managing environment variables
-- db-migrate from npm for migrations
-- jsonwebtoken from npm for working with JWTs
-- jasmine from npm for testing
+## Implementation
+Key points:
 
-## Steps to Completion
+Uses Express as web server
+Uses Postgres for the SQL database
+Uses bcrypt for password encryption
+Uses JWT for authorization
+Uses Jasmine and supertest for unit tests
+Development done with TypeScript to reduce errors
+# Deployment
 
-### 1. Plan to Meet Requirements
+## Setting up the Postgres database
+In order to run this app you need a properly configured Postgres database. For this, you need a Postgres server running on your machine (see for exemple https://www.postgresql.org/).
 
-In this repo there is a `REQUIREMENTS.md` document which outlines what this API needs to supply for the frontend, as well as the agreed upon data shapes to be passed between front and backend. This is much like a document you might come across in real life when building or extending an API. 
+Once Postgres is available on your computer, you need to enter `psql` as admin/root and do the following:
 
-Your first task is to read the requirements and update the document with the following:
-- Determine the RESTful route for each endpoint listed. Add the RESTful route and HTTP verb to the document so that the frontend developer can begin to build their fetch requests.    
-**Example**: A SHOW route: 'blogs/:id' [GET] 
+First create the user `storefront_user` by running in the psql command line:
+```
+CREATE USER storefront_user with password '7kJ3DDpqnHe3Qx';
+```
+Then create the databases for development and testing
+```
+CREATE DATABASE storefront_backend;
+CREATE DATABASE storefront_backend_test;
+```
+Finally, grant `storefront_user` access to these databases
+```
+GRANT ALL PRIVILEGES ON DATABASE storefront_backend TO storefront_user;
+GRANT ALL PRIVILEGES ON DATABASE storefront_backend_test TO storefront_user;
+```
 
-- Design the Postgres database tables based off the data shape requirements. Add to the requirements document the database tables and columns being sure to mark foreign keys.   
-**Example**: You can format this however you like but these types of information should be provided
-Table: Books (id:varchar, title:varchar, author:varchar, published_year:varchar, publisher_id:string[foreign key to publishers table], pages:number)
+## Setting up environment variables
+The following environment variables need to be set up:
+- POSTGRES_HOST=127.0.0.1
+- POSTGRES_DB=storefront_backend
+- POSTGRES_DB_TEST=storefront_backend_test
+- POSTGRES_USER=storefront_user
+- POSTGRES_PASSWORD=7kJ3DDpqnHe3Qx
+- ENV=dev
+- BCRYPT_SALT_ROUNDS=10
+- TOKEN_SECRET=LV7erLeKYDY47p (This value can be changed)
+- BCRYPT_PEPPER=ifSgBKoG5HShSW (This value can be changed)
+Dependencies and versions used
+The project depends on the following packages:
 
-**NOTE** It is important to remember that there might not be a one to one ratio between data shapes and database tables. Data shapes only outline the structure of objects being passed between frontend and API, the database may need multiple tables to store a single shape. 
+express
+bcrypt
+cors
+db-migrate
+db-migrate-pg
+dotenv
+jsonwebtoken
+pg
+typescript
+For development, there are additional dependencies
 
-### 2.  DB Creation and Migrations
+jasmine
+jasmine-spec-reporter
+jasmine-ts
+prettier
+eslint-config-prettier
+eslint-plugin-prettier
+nodemon
+supertest
+ts-node
+tsc-watch
+See the file package.json for the exact versions used.
 
-Now that you have the structure of the databse outlined, it is time to create the database and migrations. Add the npm packages dotenv and db-migrate that we used in the course and setup your Postgres database. If you get stuck, you can always revisit the database lesson for a reminder. 
+## Directory Structure
+```
+project
+│   .env   
+│   README.md
+├── docker            # Files required for creating staging and production docker images
+├── docs              # Documentation
+├── logs              # Automatically generated, contains application logs divided into days
+├── prisma            
+│   │   schema.prisma # The schema definition of the Models
+│   └── migrations    # Contains the migration files
+├──src
+│  │   app.ts
+│  │   environment.ts
+│  ├── controllers    # The controllers handles all the logic and sending responses with correct codes
+│  ├── exceptions     # The custom exceptions
+│  ├── helpers        # Helper functions / classes
+│  ├── interfaces     # The custom interfaces
+│  ├── middlewares    # The custom middlewares
+│  ├── routes         # The API routes maps to the Controllers
+│  ├── services       # The services contains the database queries and returning objects or throwing errors
+│  └── validations    # Validations to validate data before being processed by controllers (used in routes)
+└── storage           # Automatically generated, contains the uploaded files from users
+```
 
-You must also ensure that any sensitive information is hashed with bcrypt. If any passwords are found in plain text in your application it will not pass.
+## Development Instructions
 
-### 3. Models
+1. Copy and rename `.env.example` file to `.env` and edit settings
+2. Run `npm install` command to install dependencies
+3. Run `npx prisma migrate dev` command to initialize the database or `npx prisma generate` command if the database already exists
+4. Run `npm start` or `npm run dev` command to run local server (it restarts each time the code is changed)
 
-Create the models for each database table. The methods in each model should map to the endpoints in `REQUIREMENTS.md`. Remember that these models should all have test suites and mocks.
 
-### 4. Express Handlers
 
-Set up the Express handlers to route incoming requests to the correct model method. Make sure that the endpoints you create match up with the enpoints listed in `REQUIREMENTS.md`. Endpoints must have tests and be CORS enabled. 
-
-### 5. JWTs
-
-Add JWT functionality as shown in the course. Make sure that JWTs are required for the routes listed in `REQUIUREMENTS.md`.
-
-### 6. QA and `README.md`
-
-Before submitting, make sure that your project is complete with a `README.md`. Your `README.md` must include instructions for setting up and running your project including how you setup, run, and connect to your database. 
-
-Before submitting your project, spin it up and test each endpoint. If each one responds with data that matches the data shapes from the `REQUIREMENTS.md`, it is ready for submission!
