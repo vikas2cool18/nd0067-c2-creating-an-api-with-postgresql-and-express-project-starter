@@ -41,3 +41,5 @@ server.listen(environment.port, async (): Promise<void> => {
     const ip = environment.isProduction() ? Object.values(networkInterfaces()).flat().find(details => details && details.family == 'IPv4' && !details.internal)?.address : '127.0.0.1';
     Logger.info(`⚡ ${environment.appName} Server Running here -> ${ip ?? hostname()}:${environment.port}`);
 });
+
+export default app;

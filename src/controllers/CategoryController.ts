@@ -29,9 +29,9 @@ static async findById(req: Request, res: Response): Promise<void> {
 
 static async create(req: Request, res: Response): Promise<void> {
   let bodyData = matchedData(req, {locations: ['body']}); // Get only validated params
-  const {name, price, categoryId} = req.body;
-  const user = await CategoryService.create(name);
-  res.status(StatusCodes.CREATED).send(user);
+  const {name} = req.body;
+  const category = await CategoryService.create(name);
+  res.status(StatusCodes.CREATED).send(category);
 }
 
 static async delete(req: Request, res: Response): Promise<void> {

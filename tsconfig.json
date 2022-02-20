@@ -101,6 +101,8 @@
     "./node_modules",
     "./logs",
     "./docs",
-    "./storage"
+    "./storage",
+    "./build",
+    "spec"
   ]
 }

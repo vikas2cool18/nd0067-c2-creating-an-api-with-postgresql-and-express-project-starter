@@ -1,6 +1,7 @@
 import express ,{Request, Response} from "express";
 
 import jwt from 'jsonwebtoken'
+import Logger from "../helpers/logger";
 
 export function verifyAuthToken (
     req: Request,
@@ -20,6 +21,7 @@ export function verifyAuthToken (
 	const token = tokenBearer[1];
         return jwt.verify(token, process.env.TOKEN_SECRET as string, (err) => {
             if(err){
+                Logger.info(`The error message is ${err}`)
               return res.status(500).send({message: "Failed to authenticate"});
 	    }
 
