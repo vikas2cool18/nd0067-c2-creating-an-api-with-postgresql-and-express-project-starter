@@ -100,10 +100,11 @@ project
 
 ## Development Instructions
 
-1. Copy and rename `.env.example` file to `.env` and edit settings
-2. Run `npm install` command to install dependencies
-3. Run `npx prisma migrate dev` command to initialize the database or `npx prisma generate` command if the database already exists
-4. Run `npm start` or `npm run dev` command to run local server (it restarts each time the code is changed)
+1. Run `npm install` command to install dependencies
+2. Edit the environment variable and add "DATABASE_URL" as value "postgresql://postgres:postgres@localhost:5432/storefront_backend_test?schema=public". This is done to run the testcases. Then fire a command "npm run test" n order to run the test cases.
+3. Edit the environment variable and add "DATABASE_URL" as value "postgresql://postgres:postgres@localhost:5432/storefront_backend?schema=public". Open a new command prompt and run the command `npm run build`
+4. Run `npm run start` command to run local server (it restarts each time the code is changed)
+5. start testing the api, i am also attaching a postman collection for creating a user and authenticating a user and generate he jwt token. It is uploaded in the codebase as storefront.postman_collection.json. Please import the collection in the postman.
 
 
 
